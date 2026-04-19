@@ -1,0 +1,71 @@
+public class test3 {
+
+    public static void main(String[] args) {
+        int line = 5;
+        
+        for(int i = 0; i < line * 2 - 1; i++) { //漏斗形
+            int space, num;
+
+            if(i < line) {
+                space = i;
+                num = (line - i) * 2 - 1;
+            }
+            else {
+                space = (line * 2 - 2) - i;
+                num = (i - line + 1) * 2 + 1;
+            }
+
+            for(int j = 0; j < space; j++) 
+                System.out.print(" ");
+            for(int k = 0; k < num; k++)
+                System.out.print(num);
+
+            System.out.println();
+        }
+        
+        System.out.println();
+        
+        for(int i = 0; i < line * 2 - 1; i++) { //三角形
+            int space, num;
+
+            if(i < line) {
+                space = line - (i + 1);
+                num = i + 1;
+            }
+            else {
+                space = i - line + 1;
+                num = line - (i - line + 1);
+            }
+
+            for(int j = 0; j < space; j++) 
+                System.out.print(" ");
+            for(int k = 0; k < num; k++)
+                System.out.print(num);
+
+            System.out.println();
+        }
+        
+        System.out.println();
+        
+        for(int i = 0; i < line * 2 - 1; i++) { //正反三角形
+            int space, num;
+
+            if(i < line) {
+                space = line - (i + 1);
+                num = i * 2 + 1;
+            }
+            else {
+                space = i - line + 1;
+                num = line * 2 - (i - line + 1) * 2 - 1;
+            }
+
+            for(int j = 0; j < space; j++) 
+                System.out.print(" ");
+            for(int k = 0; k < num; k++)
+                System.out.print(num);
+
+            System.out.println();
+        }
+    }
+
+}
