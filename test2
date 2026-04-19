@@ -1,0 +1,56 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class test2 {
+	
+	public static void main(String[] args) {
+		Random rnd = new Random();
+		int Max = 19, min = 7, N = 2000, C = 5; //N=次數，C=前C名
+		int len = Max - min + 1;
+		int[] count = new int[len];
+		
+		for(int i = 0; i < N; i++) {
+			int num = rnd.nextInt(len) + min;
+			count[num - min]++;
+		}
+		
+		for(int i = 0; i < len; i++)
+			System.out.println("Number " + (i + min) + " occured " + count[i] + " times.");
+		
+		int[][] rank = new int[len][2];
+		
+		for(int i = 0; i < len; i++) {
+			rank[i][0] = i + min;
+			rank[i][1] = count[i];
+		}
+		
+		Arrays.sort(rank, (a, b) -> Integer.compare(b[1], a[1]));
+		
+		System.out.println();
+		
+		int Rank = 0;   // 名次
+        int printC = 0;  
+        int last = -1;    // 上一個人的次數
+
+        for (int i = 0; i < len; i++) {
+            int currentTimes = rank[i][1]; //紀錄上
+
+            if (currentTimes != last) {
+            	Rank = i + 1;
+            }
+            
+            if (Rank > C) break;
+
+            String rankN = "th";
+            if (Rank == 1) rankN = "st";
+            else if (Rank == 2) rankN = "nd";
+            else if (Rank == 3) rankN = "rd";
+
+            System.out.println("The " + Rank + rankN + " : Number " + rank[i][0] + ", " + currentTimes + " times.");
+            
+            last = currentTimes;
+            printC++;
+        }
+        System.out.println("前" + C + "名共有" + printC + "人");
+    }
+}
