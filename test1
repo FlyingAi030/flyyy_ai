@@ -1,0 +1,42 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String ID = "9B417033";
+		System.out.println("Your stutentID is : " + ID);
+		
+		int N = 5; //The Target to end code
+		String target = ID.substring(ID.length() - N);
+		System.out.print("Please enter the string of " + N + " digits :");
+		
+		while(true) {
+			String input = sc.next();
+			
+			if(input.equals(target)) {
+				System.out.println("End Code.");
+				break;
+			}
+			
+			if(input.length() == N){
+				char[] arr = input.toCharArray();
+				Arrays.sort(arr);
+				String newstring = new String(arr);
+				System.out.println("正序 : " + newstring);
+				
+				newstring = new StringBuilder(new String(arr)).reverse().toString();
+				System.out.println("倒序 : " + newstring);
+				
+				System.out.println("\nPlease enter the string of " + N + " digits :");
+			}
+			
+			if(input.length() != N){
+				System.out.println("Please enter the string of \"" + N + "\" digits :");
+			}
+		}
+	}
+
+}
